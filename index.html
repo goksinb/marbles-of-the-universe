@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Marbles of the Universe</title>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="src/clickableStar.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-asset-item
+          id="neptune-model"
+          src="src/assets/models/neptune.glb"
+        ></a-asset-item>
+        <img id="nebula-img1" src="src/assets/images/nebula1.png" />
+        <img id="nebula-img2" src="src/assets/images/nebula2.png" />
+        <img id="nebula-img3" src="src/assets/images/nebula3.png" />
+        <img id="nebula-img4" src="src/assets/images/nebula4.png" />
+        <img id="nebula-img5" src="src/assets/images/nebula5.png" />
+      </a-assets>
+
+      <!-- Camera -->
+      <a-entity id="cameraRig" position="0 0 3">
+        <a-camera>
+          <a-cursor
+            fuse="false"
+            raycaster="objects: .clickable"
+            material="color: white; shader: flat"
+            position="0 0 -1"
+            geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
+          ></a-cursor>
+        </a-camera>
+      </a-entity>
+
+      <!-- Lighting -->
+      <a-entity
+        light="type: ambient; color: #ffffff; intensity: 0.7"
+      ></a-entity>
+      <a-entity
+        light="type: directional; color: #ffffff; intensity: 0.5"
+        position="1 1 0"
+      ></a-entity>
+
+      <!-- Sky -->
+      <a-sky color="rgb(16, 17, 36)"></a-sky>
+
+      <!-- Opening Quote -->
+      <a-entity
+        position="0 4 -3"
+        animation="property: position; to: 0 4.2 -3; dir: alternate; dur: 3000; loop: true"
+      >
+        <a-text
+          value="In the beginning, play looked a lot like chaos..."
+          align="center"
+          color="#D6EAF8"
+          width="6"
+        ></a-text>
+      </a-entity>
+
+      <!-- Marbles with Synchronized Glow -->
+      <a-entity id="marbles">
+        <!-- Marble 1 -->
+        <a-entity id="marble1" class="clickable" position="-2 1.2 -3">
+          <a-sphere
+            id="marble1-sphere"
+            radius="0.2"
+            color="#FFC0CB"
+            class="clickable"
+          ></a-sphere>
+
+          <a-text
+            id="phrase1"
+            value="We used to play marbles with atoms"
+            align="center"
+            color="#D6EAF8"
+            width="6"
+            visible="false"
+            position="-2 1.2 -3"
+            material="emissive: #D6EAF8; emissiveIntensity: 0.8; shader: flat;"
+          ></a-text>
+        </a-entity>
+
+        <!-- Marble 2 -->
+        <a-entity
+          class="clickable"
+          id="marble2"
+          position="1 -0.5 -2.5"
+          animation="property: position; dir: alternate; dur: 5000; loop: true; to: 1 -0.7 -2.5"
+        >
+          <a-sphere
+            id="marble2-sphere"
+            radius="0.2"
+            color="#87CEFA"
+            opacity="0.9"
+            class="clickable"
+          ></a-sphere>
+
+          <a-text
+            id="phrase2"
+            value="A nudge- and things appeared"
+            align="center"
+            color="#D6EAF8"
+            width="6"
+            visible="false"
+            position="1 0.5 -2.5"
+            material="emissive: #D6EAF8; emissiveIntensity: 0.8; shader: flat;"
+          ></a-text>
+        </a-entity>
+
+        <!-- Marble 3 -->
+        <a-entity
+          class="clickable"
+          id="marble3"
+          position="0 1.5 -2.8"
+          animation="property: position; dir: alternate; dur: 6000; loop: true; to: 0 1.7 -2.8"
+        >
+          <a-sphere
+            class="clickable"
+            id="marble3-sphere"
+            radius="0.2"
+            color="#DA70D6"
+            opacity="0.9"
+          ></a-sphere>
+
+          <a-text
+            id="phrase3"
+            value="Throw one catch three, that's how the universe has started"
+            align="center"
+            color="#D6EAF8"
+            width="6"
+            visible="false"
+            position="-3 1 0.3"
+            material="emissive: #D6EAF8; emissiveIntensity: 0.8; shader: flat;"
+          ></a-text>
+        </a-entity>
+
+        <!-- Marble 4 -->
+        <a-entity
+          class="clickable"
+          id="marble4"
+          position="-0.8 1.2 -3"
+          animation="property: position; dir: alternate; dur: 5500; loop: true; to: -0.8 1.4 -3.2"
+        >
+          <a-sphere
+            class="clickable"
+            id="marble4-sphere"
+            radius="0.2"
+            color="#7FFFD4"
+            opacity="0.9"
+          ></a-sphere>
+          <a-text
+            id="phrase4"
+            value="To lose a marble was to invent a universe."
+            align="center"
+            color="#D6EAF8"
+            width="6"
+            visible="false"
+            position="-6 1 0.3"
+            material="emissive: #D6EAF8; emissiveIntensity: 0.8; shader: flat;"
+          ></a-text>
+        </a-entity>
+
+        <!-- Marble 5 -->
+        <a-entity
+          class="clickable"
+          id="marble5"
+          position="0.7 1 -2.2"
+          animation="property: position; dir: alternate; dur: 4500; loop: true; to: 0.7 1.2 -2.2"
+        >
+          <a-sphere
+            class="clickable"
+            id="marble5-sphere"
+            radius="0.2"
+            color="#FFD700"
+            opacity="0.9"
+          ></a-sphere>
+
+          <a-image
+            id="nebula5"
+            src="#nebula-img4"
+            visible="false"
+            position="0.7 1 -7"
+            scale="18 18 18"
+            transparent="true"
+            opacity="0"
+          ></a-image>
+
+          <a-text
+            id="phrase5"
+            value="From all that chaos, appeared planets, stars, and galaxies."
+            align="center"
+            color="#D6EAF8"
+            width="6"
+            visible="false"
+            position="-4 1 0.3"
+            material="emissive: #D6EAF8; emissiveIntensity: 0.8; shader: flat;"
+          ></a-text>
+        </a-entity>
+      </a-entity>
+
+      <!-- Neptune model (hidden initially) -->
+      <a-entity
+        id="neptune"
+        position="5 -4 -7"
+        visible="true"
+        gltf-model="#neptune-model"
+        scale="0.1 0.1 0.1"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 90000; easing: linear"
+      ></a-entity>
+    </a-scene>
+  </body>
+</html>
