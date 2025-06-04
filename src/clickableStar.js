@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const nebula = document.querySelector(`#nebula${i}`);
         if (nebula) {
           nebula.setAttribute("visible", true);
-          nebula.setAttribute("opacity", "0");
+          nebula.setAttribute("opacity", "1");
           nebula.setAttribute("animation__fadein", {
             property: "opacity",
             to: 1,
@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
               easing: "easeInOutQuad",
               startEvents: "startFadeIn",
             });
+            neptune.classList.add("clickable"); // <-- ADD THIS LINE
             neptune.emit("startFadeIn");
           }
         } else {
@@ -85,4 +86,10 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   enableMarble(current);
+});
+
+window.addEventListener("DOMContentLoaded", function () {
+  document.querySelector("#toScene2").addEventListener("click", function () {
+    window.location.href = "island.html";
+  });
 });

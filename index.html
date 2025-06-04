@@ -8,6 +8,32 @@
   </head>
   <body>
     <a-scene>
+      <a-entity
+        laser-controls="hand: right"
+        raycaster="objects: .clickable"
+      ></a-entity>
+      <a-entity
+        laser-controls="hand: left"
+        raycaster="objects: .clickable"
+      ></a-entity>
+
+      <a-entity
+        hand-tracking-controls="hand: left"
+        raycaster="objects: .clickable"
+      ></a-entity>
+      <a-entity
+        hand-tracking-controls="hand: right"
+        raycaster="objects: .clickable"
+      ></a-entity>
+
+      <a-entity
+        hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"
+      ></a-entity>
+      <a-entity
+        hand-controls="hand: right; handModelStyle: lowPoly; color: #ccccff"
+      ></a-entity>
+
+      <a-light type="ambient" color="#000"></a-light>
       <a-assets>
         <a-asset-item
           id="neptune-model"
@@ -201,13 +227,20 @@
 
       <!-- Neptune model (hidden initially) -->
       <a-entity
-        id="neptune"
+        id="toScene2"
         position="5 -4 -7"
         visible="true"
         gltf-model="#neptune-model"
-        scale="0.1 0.1 0.1"
+        scale="10 10 10"
         animation="property: rotation; to: 0 360 0; loop: true; dur: 90000; easing: linear"
-      ></a-entity>
+      >
+        <a-sphere
+          radius="1.5"
+          color="#fff"
+          opacity="0.001"
+          class="clickable"
+        ></a-sphere>
+      </a-entity>
     </a-scene>
   </body>
 </html>
