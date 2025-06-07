@@ -36,14 +36,19 @@
       <a-light type="ambient" color="#000"></a-light>
       <a-assets>
         <a-asset-item
-          id="neptune-model"
-          src="src/assets/models/neptune.glb"
+          id="island-model"
+          src="src/assets/models/island.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="glowing-star"
+          src="src/assets/models/glowingStar.glb"
         ></a-asset-item>
         <img id="nebula-img1" src="src/assets/images/nebula1.png" />
         <img id="nebula-img2" src="src/assets/images/nebula2.png" />
         <img id="nebula-img3" src="src/assets/images/nebula3.png" />
         <img id="nebula-img4" src="src/assets/images/nebula4.png" />
         <img id="nebula-img5" src="src/assets/images/nebula5.png" />
+        <img id="stars-sky" src="src/assets/images/starsmilky.jpg" />
       </a-assets>
 
       <!-- Camera -->
@@ -67,9 +72,13 @@
         light="type: directional; color: #ffffff; intensity: 0.5"
         position="1 1 0"
       ></a-entity>
+      <a-light position=""></a-light>
 
       <!-- Sky -->
-      <a-sky color="rgb(16, 17, 36)"></a-sky>
+      <a-sky
+        src="#stars-sky"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 160000; easing: linear"
+      ></a-sky>
 
       <!-- Opening Quote -->
       <a-entity
@@ -81,17 +90,23 @@
           align="center"
           color="#D6EAF8"
           width="6"
+          scale="1.5 1.5 1.5"
         ></a-text>
       </a-entity>
 
       <!-- Marbles with Synchronized Glow -->
       <a-entity id="marbles">
         <!-- Marble 1 -->
-        <a-entity id="marble1" class="clickable" position="-2 1.2 -3">
+        <a-entity
+          id="marble1"
+          class="clickable"
+          position="-2 2 -3"
+          animation="property: position; dir: alternate; dur: 5000; loop: true; to: -2 2.2 -3"
+        >
           <a-sphere
             id="marble1-sphere"
             radius="0.2"
-            color="#FFC0CB"
+            color="##f9e79f"
             class="clickable"
           ></a-sphere>
 
@@ -102,7 +117,7 @@
             color="#D6EAF8"
             width="6"
             visible="false"
-            position="-2 1.2 -3"
+            position="-1 1 0"
             material="emissive: #D6EAF8; emissiveIntensity: 0.8; shader: flat;"
           ></a-text>
         </a-entity>
@@ -111,13 +126,13 @@
         <a-entity
           class="clickable"
           id="marble2"
-          position="1 -0.5 -2.5"
-          animation="property: position; dir: alternate; dur: 5000; loop: true; to: 1 -0.7 -2.5"
+          position="-1 2.2 -3"
+          animation="property: position; dir: alternate; dur: 5000; loop: true; to: -1 2 -3"
         >
           <a-sphere
             id="marble2-sphere"
             radius="0.2"
-            color="#87CEFA"
+            color="#f9e79f"
             opacity="0.9"
             class="clickable"
           ></a-sphere>
@@ -129,7 +144,7 @@
             color="#D6EAF8"
             width="6"
             visible="false"
-            position="1 0.5 -2.5"
+            position="1 0.6 -1.5"
             material="emissive: #D6EAF8; emissiveIntensity: 0.8; shader: flat;"
           ></a-text>
         </a-entity>
@@ -138,14 +153,14 @@
         <a-entity
           class="clickable"
           id="marble3"
-          position="0 1.5 -2.8"
-          animation="property: position; dir: alternate; dur: 6000; loop: true; to: 0 1.7 -2.8"
+          position="0 1.7 -3"
+          animation="property: position; dir: alternate; dur: 6000; loop: true; to: 0 1.4 -3"
         >
           <a-sphere
             class="clickable"
             id="marble3-sphere"
             radius="0.2"
-            color="#DA70D6"
+            color="#f9e79f"
             opacity="0.9"
           ></a-sphere>
 
@@ -156,7 +171,7 @@
             color="#D6EAF8"
             width="6"
             visible="false"
-            position="-3 1 0.3"
+            position="-2 0.3 0.3"
             material="emissive: #D6EAF8; emissiveIntensity: 0.8; shader: flat;"
           ></a-text>
         </a-entity>
@@ -165,14 +180,14 @@
         <a-entity
           class="clickable"
           id="marble4"
-          position="-0.8 1.2 -3"
-          animation="property: position; dir: alternate; dur: 5500; loop: true; to: -0.8 1.4 -3.2"
+          position="1 1.6 -3"
+          animation="property: position; dir: alternate; dur: 5500; loop: true; to: 1 1.3 -3"
         >
           <a-sphere
             class="clickable"
             id="marble4-sphere"
             radius="0.2"
-            color="#7FFFD4"
+            color="#f9e79f"
             opacity="0.9"
           ></a-sphere>
           <a-text
@@ -182,7 +197,7 @@
             color="#D6EAF8"
             width="6"
             visible="false"
-            position="-6 1 0.3"
+            position="-2 -0.4 0.3"
             material="emissive: #D6EAF8; emissiveIntensity: 0.8; shader: flat;"
           ></a-text>
         </a-entity>
@@ -191,14 +206,14 @@
         <a-entity
           class="clickable"
           id="marble5"
-          position="0.7 1 -2.2"
-          animation="property: position; dir: alternate; dur: 4500; loop: true; to: 0.7 1.2 -2.2"
+          position="2 1.5 -3"
+          animation="property: position; dir: alternate; dur: 4500; loop: true; to: 2 1.2 -3"
         >
           <a-sphere
             class="clickable"
             id="marble5-sphere"
             radius="0.2"
-            color="#FFD700"
+            color="#f9e79f"
             opacity="0.9"
           ></a-sphere>
 
@@ -206,8 +221,8 @@
             id="nebula5"
             src="#nebula-img4"
             visible="false"
-            position="0.7 1 -7"
-            scale="18 18 18"
+            position="2 1 -7"
+            scale="22 22 22"
             transparent="true"
             opacity="0"
           ></a-image>
@@ -219,25 +234,26 @@
             color="#D6EAF8"
             width="6"
             visible="false"
-            position="-4 1 0.3"
+            position="-1.2 -1.4 0.3"
             material="emissive: #D6EAF8; emissiveIntensity: 0.8; shader: flat;"
           ></a-text>
         </a-entity>
       </a-entity>
 
-      <!-- Neptune model (hidden initially) -->
+      <!-- Island model (hidden initially) -->
       <a-entity
-        id="toScene2"
-        position="5 -4 -7"
+        id="goksin-island"
+        position="1 -1 -3"
         visible="true"
-        gltf-model="#neptune-model"
-        scale="10 10 10"
+        gltf-model="#island-model"
+        scale=" 3 3 3"
         animation="property: rotation; to: 0 360 0; loop: true; dur: 90000; easing: linear"
       >
         <a-sphere
           radius="1.5"
           color="#fff"
           opacity="0.001"
+          scale="0.200 0.200 0.200"
           class="clickable"
         ></a-sphere>
       </a-entity>

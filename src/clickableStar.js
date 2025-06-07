@@ -33,10 +33,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const nebula = document.querySelector(`#nebula${i}`);
         if (nebula) {
           nebula.setAttribute("visible", true);
-          nebula.setAttribute("opacity", "1");
+          nebula.setAttribute("opacity", "0");
           nebula.setAttribute("animation__fadein", {
             property: "opacity",
-            to: 1,
+            to: 0.6,
             dur: 2000,
             easing: "easeInOutQuad",
             startEvents: "startFadeIn",
@@ -59,21 +59,21 @@ document.addEventListener("DOMContentLoaded", () => {
           phrase.emit("startFadeIn");
         }
 
-        // If last marble clicked, show Neptune
+        // If last marble clicked, show Island
         if (i === marbleCount) {
-          const neptune = document.querySelector("#neptune");
-          if (neptune) {
-            neptune.setAttribute("visible", true);
-            neptune.setAttribute("opacity", "0");
-            neptune.setAttribute("animation__fadein", {
+          const island = document.querySelector("#goksin-island");
+          if (island) {
+            island.setAttribute("visible", true);
+            island.setAttribute("opacity", "0");
+            island.setAttribute("animation__fadein", {
               property: "opacity",
               to: 1,
               dur: 2000,
               easing: "easeInOutQuad",
               startEvents: "startFadeIn",
             });
-            neptune.classList.add("clickable"); // <-- ADD THIS LINE
-            neptune.emit("startFadeIn");
+            island.classList.add("clickable"); // <-- ADD THIS LINE
+            island.emit("startFadeIn");
           }
         } else {
           // Enable next marble
@@ -89,7 +89,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 window.addEventListener("DOMContentLoaded", function () {
-  document.querySelector("#toScene2").addEventListener("click", function () {
-    window.location.href = "island.html";
-  });
+  document
+    .querySelector("#goksin-island")
+    .addEventListener("click", function () {
+      window.location.href = "island.html";
+    });
 });

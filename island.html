@@ -4,7 +4,19 @@
   </head>
   <body>
     <a-scene>
-      <a-entity camera look-controls>
+      <a-assets>
+        <a-asset-item
+          id="island-model"
+          src="src/assets/models/island.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="empty-island"
+          src="src/assets/models/emptyIsland.glb"
+        ></a-asset-item>
+
+        <img id="stars-sky" src="src/assets/images/starsmilky.jpg" />
+      </a-assets>
+      <a-entity camera look-controls wasd-controls position="0 20 0">
         <a-entity
           cursor="fuse: true; fuseTimeout: 1000"
           position="0 0 -1"
@@ -14,15 +26,26 @@
         </a-entity>
       </a-entity>
 
-      <a-sphere
-        id="backToScene1"
-        position="0 1.5 -3"
-        radius="0.5"
-        color="#33FF57"
-        event-set__enter="_event: mouseenter; color: #75FF33"
-        event-set__leave="_event: mouseleave; color: #33FF57"
+      <a-sky
+        src="#stars-sky"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 200000; easing: linear"
+      ></a-sky>
+
+      <!-- Island model (hidden initially) -->
+      <a-entity
+        id="empty-island"
+        position="0 -40 -35"
+        visible="true"
+        gltf-model="#empty-island"
+        scale="60 60 60"
       >
-      </a-sphere>
+        <a-sphere
+          radius="1.5"
+          color="#fff"
+          opacity="0.001"
+          class="clickable"
+        ></a-sphere>
+      </a-entity>
     </a-scene>
 
     <script>
