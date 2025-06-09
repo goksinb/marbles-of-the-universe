@@ -1,30 +1,82 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
   </head>
   <body>
     <a-scene>
+      <a-entity
+        laser-controls="hand: right"
+        raycaster="objects: .clickable"
+      ></a-entity>
+      <a-entity
+        laser-controls="hand: left"
+        raycaster="objects: .clickable"
+      ></a-entity>
+
+      <a-entity
+        hand-tracking-controls="hand: left"
+        raycaster="objects: .clickable"
+      ></a-entity>
+      <a-entity
+        hand-tracking-controls="hand: right"
+        raycaster="objects: .clickable"
+      ></a-entity>
+
+      <a-entity
+        hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"
+      ></a-entity>
+      <a-entity
+        hand-controls="hand: right; handModelStyle: lowPoly; color: #ccccff"
+      ></a-entity>
+
       <a-assets>
         <a-asset-item
-          id="island-model"
-          src="src/assets/models/island.glb"
+          id="floating-island1"
+          src="src/assets/models/Floating1.glb"
         ></a-asset-item>
         <a-asset-item
-          id="empty-island"
-          src="src/assets/models/emptyIsland.glb"
+          id="floating-island2"
+          src="src/assets/models/Floating2.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="floating-island3"
+          src="src/assets/models/Floating3.glb"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="floating-island4"
+          src="src/assets/models/Floating4.glb"
         ></a-asset-item>
 
         <img id="stars-sky" src="src/assets/images/starsmilky.jpg" />
       </a-assets>
-      <a-entity camera look-controls wasd-controls position="0 20 0">
+      <a-entity id="cameraRig" position="0 14 110">
         <a-entity
-          cursor="fuse: true; fuseTimeout: 1000"
-          position="0 0 -1"
-          geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-          material="color: black; shader: flat"
+          camera
+          look-controls
+          wasd-controls
+          position="0 0 0"
+          wasd-controls-enabled="true"
         >
+          <a-entity
+            cursor="fuse: true; fuseTimeout: 1000"
+            material="color: white; shader: flat"
+            position="0 0 -1"
+            geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+            material="color: black; shader: flat"
+          ></a-entity>
         </a-entity>
       </a-entity>
+
+      <a-entity
+        light="type: directional; color: #fff7d9; intensity: 0.7"
+        position="5 3 0"
+      ></a-entity>
+      <a-entity
+        light="type: directional; color: #fff7d9; intensity: 0.5"
+        position="-5 -3 0"
+      ></a-entity>
 
       <a-sky
         src="#stars-sky"
@@ -33,11 +85,11 @@
 
       <!-- Island model (hidden initially) -->
       <a-entity
-        id="empty-island"
-        position="0 -40 -35"
+        id="floating1"
+        position="0 0 0"
         visible="true"
-        gltf-model="#empty-island"
-        scale="60 60 60"
+        gltf-model="#floating-island1"
+        scale="1 1 1"
       >
         <a-sphere
           radius="1.5"
@@ -46,6 +98,49 @@
           class="clickable"
         ></a-sphere>
       </a-entity>
+
+      <a-entity
+        id="floating2"
+        position="-70 -50 0"
+        visible="true"
+        gltf-model="#floating-island2"
+        scale="20 20 20"
+      >
+        <a-sphere
+          radius="1.5"
+          color="#fff"
+          opacity="0.001"
+          class="clickable"
+        ></a-sphere>
+      </a-entity>
+      <!--   <a-entity
+        id="floating3"
+        position="-80 25 0"
+        visible="true"
+        gltf-model="#floating-island3"
+        scale="0.1 0.1 0.1"
+      >
+        <a-sphere
+          radius="1.5"
+          color="#fff"
+          opacity="0.001"
+          class="clickable"
+        ></a-sphere>
+      </a-entity> -->
+      <!-- <a-entity
+        id="floating4"
+        position="-80 6 0"
+        visible="true"
+        gltf-model="#floating-island4"
+        scale="0.04 0.04 0.04"
+      >
+        <a-sphere
+          radius="1.5"
+          color="#fff"
+          opacity="0.001"
+          class="clickable"
+        ></a-sphere>
+      </a-entity> -->
     </a-scene>
 
     <script>

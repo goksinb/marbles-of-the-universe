@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
           nebula.setAttribute("opacity", "0");
           nebula.setAttribute("animation__fadein", {
             property: "opacity",
-            to: 0.6,
+            to: 0.3,
             dur: 2000,
             easing: "easeInOutQuad",
             startEvents: "startFadeIn",
@@ -60,20 +60,24 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // If last marble clicked, show Island
+        // Show Island with slow fade-in
         if (i === marbleCount) {
           const island = document.querySelector("#goksin-island");
           if (island) {
             island.setAttribute("visible", true);
-            island.setAttribute("opacity", "0");
+            island.setAttribute("opacity", "0"); // Start from opacity 0
+
+            // Animation to fade the island in
             island.setAttribute("animation__fadein", {
               property: "opacity",
-              to: 1,
-              dur: 2000,
-              easing: "easeInOutQuad",
+              to: 1, // Fade to opacity 1
+              dur: 2000, // Duration of the fade
+              easing: "easeInOutQuad", // Easing function
               startEvents: "startFadeIn",
             });
-            island.classList.add("clickable"); // <-- ADD THIS LINE
-            island.emit("startFadeIn");
+
+            island.emit("startFadeIn"); // Start the fade-in animation            island.emit("startFadeIn"); // Start the fade-in animation
+            island.classList.add("clickable"); // Ensure the island is clickable
           }
         } else {
           // Enable next marble
