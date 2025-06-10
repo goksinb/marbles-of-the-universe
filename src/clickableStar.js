@@ -124,6 +124,6 @@ window.addEventListener("DOMContentLoaded", function () {
   document
     .querySelector("#klejda-island-entity")
     .addEventListener("click", function () {
-      window.location.href = "";
+      window.location.href = "https://ossified-navy-clove.glitch.me/";
     });
 });

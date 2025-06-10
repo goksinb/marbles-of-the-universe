@@ -79,11 +79,6 @@
 
       <!-- Lighting -->
 
-      <a-entity
-        light="type: ambient; color: #fff7d9; intensity: 0.8"
-        position="70 0 0"
-      ></a-entity>
-
       <!-- Sky -->
       <a-sky
         src="#stars-sky"
@@ -270,20 +265,20 @@
       </a-entity>
       <a-entity
         id="ash-island-entity"
-        position="-3.4 1 0"
+        position="-3.2 1 0.1"
         visible="true"
         gltf-model="#ash-island"
         scale="0.15 0.15 0.15"
         opacity="0"
         animation="property: rotation; to: 0 360 0; loop: true; dur: 90000; easing: linear"
       >
-        <a-sphere
+        <a-box
           radius="1.5"
           color="#ffffff"
           opacity="0.001"
-          scale="0.200 0.200 0.200"
+          scale="20 10 10"
           class="clickable"
-        ></a-sphere>
+        ></a-box>
       </a-entity>
       <a-entity
         id="profira-island-entity"
@@ -304,7 +299,7 @@
       </a-entity>
       <a-entity
         id="klejda-island-entity"
-        position="3.5 1.7 1"
+        position="3.5 1.5 1"
         visible="true"
         gltf-model="#klejda-island"
         scale="0.04 0.04 0.04"
@@ -315,7 +310,7 @@
           radius="1.5"
           color="#ffffff"
           opacity="0.001"
-          scale="25 25 20"
+          scale="25 40 20"
           class="clickable"
         ></a-box>
       </a-entity>
