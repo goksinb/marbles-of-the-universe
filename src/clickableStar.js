@@ -94,8 +94,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
 window.addEventListener("DOMContentLoaded", function () {
   document
-    .querySelector("#goksin-island")
+    .querySelector("#goksin-island-entity")
     .addEventListener("click", function () {
       window.location.href = "island.html";
+    });
+});
+window.addEventListener("DOMContentLoaded", function () {
+  document
+    .querySelector("#ash-island-entity")
+    .addEventListener("click", function () {
+      window.location.href = "http://webxr-floatingisland.netlify.app";
+    });
+});
+window.addEventListener("DOMContentLoaded", function () {
+  document
+    .querySelector("#profira-island-entity")
+    .addEventListener("click", function () {
+      window.location.href = "https://immersive-space.glitch.me";
+    });
+});
+window.addEventListener("DOMContentLoaded", function () {
+  document
+    .querySelector("#noory-island-entity")
+    .addEventListener("click", function () {
+      window.location.href = "";
+    });
+});
+window.addEventListener("DOMContentLoaded", function () {
+  document
+    .querySelector("#klejda-island-entity")
+    .addEventListener("click", function () {
+      window.location.href = "";
     });
 });

@@ -35,16 +35,30 @@
 
       <a-assets>
         <a-asset-item
-          id="island-model"
-          src="src/assets/models/combinedIsland.glb"
+          id="goksin-island"
+          src="src/assets/models/goksin-model.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="ash-island"
+          src="src/assets/models/ash-model.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="profira-island"
+          src="src/assets/models/profira-model.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="klejda-island"
+          src="src/assets/models/klejda-model.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="noory-island"
+          src="src/assets/models/noory-model.glb"
         ></a-asset-item>
         <a-asset-item
           id="glowing-star"
           src="src/assets/models/glowingStar.glb"
         ></a-asset-item>
-        <img id="nebula-img1" src="src/assets/images/nebula1.png" />
-        <img id="nebula-img2" src="src/assets/images/nebula2.png" />
-        <img id="nebula-img3" src="src/assets/images/nebula3.png" />
+
         <img id="nebula-img4" src="src/assets/images/nebula4.png" />
         <img id="nebula-img5" src="src/assets/images/nebula5.png" />
         <img id="stars-sky" src="src/assets/images/starsmilky.jpg" />
@@ -52,7 +66,7 @@
 
       <!-- Camera -->
       <a-entity id="cameraRig" position="0 0 4">
-        <a-camera>
+        <a-camera fov="100">
           <a-cursor
             fuse="false"
             raycaster="objects: .clickable"
@@ -78,8 +92,8 @@
 
       <!-- Opening Quote -->
       <a-entity
-        position="0 4 -3"
-        animation="property: position; to: 0 4.2 -3; dir: alternate; dur: 3000; loop: true"
+        position="0 6 -3"
+        animation="property: position; to: 0 5.8 -3; dir: alternate; dur: 3000; loop: true"
       >
         <a-text
           value="In the beginning, play looked a lot like chaos..."
@@ -113,7 +127,7 @@
             color="#D6EAF8"
             width="6"
             visible="false"
-            position="-1 1 0"
+            position="-1 3 0"
             material="emissive: #D6EAF8; emissiveIntensity: 0.8; shader: flat;"
           ></a-text>
         </a-entity>
@@ -140,7 +154,7 @@
             color="#D6EAF8"
             width="6"
             visible="false"
-            position="1 0.6 -1.5"
+            position="1 2.7 -1.5"
             material="emissive: #D6EAF8; emissiveIntensity: 0.8; shader: flat;"
           ></a-text>
         </a-entity>
@@ -167,7 +181,7 @@
             color="#D6EAF8"
             width="6"
             visible="false"
-            position="-2 0.1 0.3"
+            position="-2 1.8 0.3"
             material="emissive: #D6EAF8; emissiveIntensity: 0.8; shader: flat;"
           ></a-text>
         </a-entity>
@@ -193,7 +207,7 @@
             color="#D6EAF8"
             width="6"
             visible="false"
-            position="-2 -0.4 0.3"
+            position="-2 1 0.3"
             material="emissive: #D6EAF8; emissiveIntensity: 0.8; shader: flat;"
           ></a-text>
         </a-entity>
@@ -217,20 +231,20 @@
             id="nebula5"
             src="#nebula-img4"
             visible="false"
-            position="5 -1 -7"
-            scale="22 22 22"
+            position="5 -1 -9"
+            scale="25 25 25"
             transparent="true"
             opacity="0"
           ></a-image>
 
           <a-text
             id="phrase5"
-            value="From all that chaos, appeared planets, stars, and galaxies."
+            value="From all that chaos, appeared planets, stars, and galaxies and everything else."
             align="center"
             color="#D6EAF8"
             width="6"
             visible="false"
-            position="-1.2 -1.4 0.3"
+            position="-1.2 0.6 0.3"
             material="emissive: #D6EAF8; emissiveIntensity: 0.8; shader: flat;"
           ></a-text>
         </a-entity>
@@ -238,11 +252,28 @@
 
       <!-- Island model (hidden initially) -->
       <a-entity
-        id="goksin-island"
-        position="-2.5 -0.3 0"
-        visible="false"
-        gltf-model="#island-model"
+        id="goksin-island-entity"
+        position="0 -1 0"
+        visible="true"
+        gltf-model="#goksin-island"
         scale=" 0.02 0.02 0.02"
+        opacity="1"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 90000; easing: linear"
+      >
+        <a-box
+          radius="1.5"
+          color="#ffffff"
+          opacity="0.001"
+          scale="50 50 50"
+          class="clickable"
+        ></a-box>
+      </a-entity>
+      <a-entity
+        id="ash-island-entity"
+        position="-3.4 1 0"
+        visible="true"
+        gltf-model="#ash-island"
+        scale="0.15 0.15 0.15"
         opacity="0"
         animation="property: rotation; to: 0 360 0; loop: true; dur: 90000; easing: linear"
       >
@@ -253,6 +284,23 @@
           scale="0.200 0.200 0.200"
           class="clickable"
         ></a-sphere>
+      </a-entity>
+      <a-entity
+        id="profira-island-entity"
+        position="2.5 -0.3 1"
+        visible="true"
+        gltf-model="#profira-island"
+        scale="0.06 0.06 0.06"
+        opacity="1"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 90000; easing: linear"
+      >
+        <a-box
+          radius="1.5"
+          color="#ffffff"
+          opacity="0.001"
+          scale="25 25 20"
+          class="clickable"
+        ></a-box>
       </a-entity>
     </a-scene>
   </body>
