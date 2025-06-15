@@ -8,52 +8,12 @@
   </head>
   <body>
     <a-scene>
-      <a-entity
-        laser-controls="hand: right"
-        raycaster="objects: .clickable"
-      ></a-entity>
-      <a-entity
-        laser-controls="hand: left"
-        raycaster="objects: .clickable"
-      ></a-entity>
-
-      <a-entity
-        hand-tracking-controls="hand: left"
-        raycaster="objects: .clickable"
-      ></a-entity>
-      <a-entity
-        hand-tracking-controls="hand: right"
-        raycaster="objects: .clickable"
-      ></a-entity>
-
-      <a-entity
-        hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"
-      ></a-entity>
-      <a-entity
-        hand-controls="hand: right; handModelStyle: lowPoly; color: #ccccff"
-      ></a-entity>
-
       <a-assets>
         <a-asset-item
           id="goksin-island"
           src="/assets/models/goksin-model.glb"
         ></a-asset-item>
-        <a-asset-item
-          id="ash-island"
-          src="/assets/models/ash-model.glb"
-        ></a-asset-item>
-        <a-asset-item
-          id="profira-island"
-          src="/assets/models/profira-model.glb"
-        ></a-asset-item>
-        <a-asset-item
-          id="klejda-island"
-          src="/assets/models/klejda-model.glb"
-        ></a-asset-item>
-        <a-asset-item
-          id="noory-island"
-          src="/assets/models/noory-model.glb"
-        ></a-asset-item>
+
         <a-asset-item
           id="glowing-star"
           src="/assets/models/glowingStar.glb"
@@ -65,8 +25,8 @@
       </a-assets>
 
       <!-- Camera -->
-      <a-entity id="cameraRig" position="0 0 4">
-        <a-camera fov="100">
+      <a-entity id="cameraRig" position="0 0 3">
+        <a-camera fov="80">
           <a-cursor
             fuse="false"
             raycaster="objects: .clickable"
@@ -75,6 +35,22 @@
             geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
           ></a-cursor>
         </a-camera>
+        <a-entity
+          thumbstick-turn="rig: #cameraRig; speed: 60"
+          laser-controls="hand: right"
+          raycaster="objects: .clickable"
+          cursor="fuse: false"
+          position="0.2 -0.5 -0.5"
+        ></a-entity>
+
+        <a-entity
+          id="leftController"
+          laser-controls="hand: left"
+          raycaster="objects: .clickable"
+          cursor="fuse: false"
+          thumbstick-movement="speed: 2; movementTarget: #cameraRig"
+          position="-0.2 -0.5 -0.5"
+        ></a-entity>
       </a-entity>
 
       <!-- Lighting -->
@@ -111,7 +87,7 @@
           <a-sphere
             id="marble1-sphere"
             radius="0.35"
-            color="##ffff"
+            color="#ffffff"
             class="clickable"
           ></a-sphere>
 
@@ -123,7 +99,6 @@
             width="6"
             visible="false"
             position="-1 3 0"
-            material="emissive: #D6EAF8; emissiveIntensity: 0.8; shader: flat;"
           ></a-text>
         </a-entity>
 
@@ -137,7 +112,7 @@
           <a-sphere
             id="marble2-sphere"
             radius="0.35"
-            color="##ffff"
+            color="#ffffff"
             opacity="0.9"
             class="clickable"
           ></a-sphere>
@@ -150,7 +125,6 @@
             width="6"
             visible="false"
             position="1 2.7 -1.5"
-            material="emissive: #D6EAF8; emissiveIntensity: 0.8; shader: flat;"
           ></a-text>
         </a-entity>
 
@@ -165,7 +139,7 @@
             class="clickable"
             id="marble3-sphere"
             radius="0.35"
-            color="##ffff"
+            color="#ffffff"
             opacity="0.9"
           ></a-sphere>
 
@@ -177,7 +151,6 @@
             width="6"
             visible="false"
             position="-2 1.8 0.3"
-            material="emissive: #D6EAF8; emissiveIntensity: 0.8; shader: flat;"
           ></a-text>
         </a-entity>
 
@@ -192,7 +165,7 @@
             class="clickable"
             id="marble4-sphere"
             radius="0.35"
-            color="##ffff"
+            color="#ffffff"
             opacity="0.9"
           ></a-sphere>
           <a-text
@@ -203,7 +176,6 @@
             width="6"
             visible="false"
             position="-2 1 0.3"
-            material="emissive: #D6EAF8; emissiveIntensity: 0.8; shader: flat;"
           ></a-text>
         </a-entity>
 
@@ -218,7 +190,7 @@
             class="clickable"
             id="marble5-sphere"
             radius="0.35"
-            color="##ffff"
+            color="#ffffff"
             opacity="0.9"
           ></a-sphere>
 
@@ -240,7 +212,6 @@
             width="6"
             visible="false"
             position="-1.2 0.6 0.3"
-            material="emissive: #D6EAF8; emissiveIntensity: 0.8; shader: flat;"
           ></a-text>
         </a-entity>
       </a-entity>
@@ -249,71 +220,21 @@
       <a-entity
         id="goksin-island-entity"
         position="0 -1 0"
-        visible="true"
         gltf-model="#goksin-island"
         scale="0.02 0.02 0.02"
-        opacity="1"
-        animation="property: rotation; to: 0 360 0; loop: true; dur: 90000; easing: linear"
-      >
-        <a-box
-          radius="1.5"
-          color="#ffffff"
-          opacity="0.001"
-          scale="50 50 50"
-          class="clickable"
-        ></a-box>
-      </a-entity>
-      <a-entity
-        id="ash-island-entity"
-        position="-3.2 1 0.1"
         visible="true"
-        gltf-model="#ash-island"
-        scale="0.15 0.15 0.15"
-        opacity="0"
         animation="property: rotation; to: 0 360 0; loop: true; dur: 90000; easing: linear"
       >
         <a-box
-          radius="1.5"
-          color="#ffffff"
-          opacity="0.001"
-          scale="20 10 10"
+          id="goksin-island-hitbox"
           class="clickable"
+          position="0 0 0"
+          material="opacity: 0.001; transparent: true"
+          scale="40 40 40"
+          island-link
         ></a-box>
-      </a-entity>
-      <a-entity
-        id="profira-island-entity"
-        position="2.5 -0.3 1"
-        visible="true"
-        gltf-model="#profira-island"
-        scale="0.06 0.06 0.06"
-        opacity="1"
-        animation="property: rotation; to: 0 360 0; loop: true; dur: 90000; easing: linear"
+        ></a-entity
       >
-        <a-box
-          radius="1.5"
-          color="#ffffff"
-          opacity="0.001"
-          scale="25 25 20"
-          class="clickable"
-        ></a-box>
-      </a-entity>
-      <a-entity
-        id="klejda-island-entity"
-        position="3.5 1.5 1"
-        visible="true"
-        gltf-model="#klejda-island"
-        scale="0.04 0.04 0.04"
-        opacity="1"
-        animation="property: rotation; to: 0 360 0; loop: true; dur: 90000; easing: linear"
-      >
-        <a-box
-          radius="1.5"
-          color="#ffffff"
-          opacity="0.001"
-          scale="25 40 20"
-          class="clickable"
-        ></a-box>
-      </a-entity>
     </a-scene>
   </body>
 </html>

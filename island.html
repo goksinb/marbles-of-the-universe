@@ -144,11 +144,16 @@
     </a-scene>
 
     <script>
-      document
-        .querySelector("#backToScene1")
-        .addEventListener("click", function () {
-          window.location.href = "scene1.html"; // Go back to first scene
-        });
+      window.addEventListener("DOMContentLoaded", () => {
+        const backButton = document.querySelector("#backToScene1");
+        if (backButton) {
+          backButton.addEventListener("click", function () {
+            window.location.href = "scene1.html"; // Go back to first scene
+          });
+        } else {
+          console.warn("backToScene1 button not found");
+        }
+      });
     </script>
   </body>
 </html>
