@@ -5,11 +5,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const enableMarble = (i) => {
     const marble = document.querySelector(`#marble${i}`);
     if (!marble) return;
+
     marble.classList.add("clickable");
+
+    // ✅ Refresh raycaster targets
+    const scene = document.querySelector("a-scene");
+    if (scene?.components?.raycaster) {
+      scene.components.raycaster.refreshObjects();
+    }
 
     const sphere = marble.querySelector(`#marble${i}-sphere`);
     if (sphere) {
-      // Add glow pulse animation
       sphere.setAttribute("animation__pulse", {
         property: "scale",
         dir: "alternate",
@@ -22,14 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
     marble.addEventListener(
       "click",
       () => {
-        // Disable current marble
         marble.classList.remove("clickable");
         sphere?.removeAttribute("animation__pulse");
-
-        // Hide marble sphere
         sphere?.setAttribute("visible", false);
 
-        // Reveal nebula with fade-in
         const nebula = document.querySelector(`#nebula${i}`);
         if (nebula) {
           nebula.setAttribute("visible", true);
@@ -44,7 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
           nebula.emit("startFadeIn");
         }
 
-        // Reveal phrase with fade-in & emissive glow
         const phrase = document.querySelector(`#phrase${i}`);
         if (phrase) {
           phrase.setAttribute("visible", true);
@@ -59,30 +60,32 @@ document.addEventListener("DOMContentLoaded", () => {
           phrase.emit("startFadeIn");
         }
 
-        // If last marble clicked, show Island
-        // Show Island with slow fade-in
         if (i === marbleCount) {
           const island = document.querySelector("#goksin-island-entity");
           if (island) {
             island.setAttribute("visible", true);
-            island.setAttribute("opacity", "0"); // Start from opacity 0
-
-            // Animation to fade the island in
+            island.setAttribute("opacity", "0");
             island.setAttribute("animation__fadein", {
               property: "opacity",
-              to: 1, // Fade to opacity 1
-              dur: 2000, // Duration of the fade
-              easing: "easeInOutQuad", // Easing function
+              to: 1,
+              dur: 2000,
+              easing: "easeInOutQuad",
               startEvents: "startFadeIn",
             });
+            island.emit("startFadeIn");
+            island.classList.add("clickable");
 
-            island.emit("startFadeIn"); // Start the fade-in animation            island.emit("startFadeIn"); // Start the fade-in animation
-            island.classList.add("clickable"); // Ensure the island is clickable
+            // Refresh raycaster again for the island
+            if (scene?.components?.raycaster) {
+              scene.components.raycaster.refreshObjects();
+            }
           }
         } else {
-          // Enable next marble
           current++;
-          enableMarble(current);
+          // ✅ Use delay + requestAnimationFrame to prevent instant re-click
+          setTimeout(() => {
+            requestAnimationFrame(() => enableMarble(current));
+          }, 50);
         }
       },
       {once: true}
@@ -92,12 +95,13 @@ document.addEventListener("DOMContentLoaded", () => {
   enableMarble(current);
 });
 
-window.addEventListener("DOMContentLoaded", function () {
-  document
-    .querySelector("#goksin-island-entity")
-    .addEventListener("click", function () {
+AFRAME.registerComponent("island-link", {
+  init: function () {
+    this.el.addEventListener("click", () => {
+      console.log("Island hitbox clicked!");
       window.location.href = "island.html";
     });
+  },
 });
 
 AFRAME.registerComponent("thumbstick-movement", {
@@ -146,15 +150,14 @@ AFRAME.registerComponent("thumbstick-movement", {
 
 AFRAME.registerComponent("thumbstick-turn", {
   schema: {
-    speed: {type: "number", default: 60}, // degrees per second
-    rig: {type: "selector"}, // camera rig to rotate
+    speed: {type: "number", default: 60},
+    rig: {type: "selector"},
   },
 
   init: function () {
     this.rotationInput = 0;
 
     this.el.addEventListener("axismove", (e) => {
-      // axis[2] = X axis on right joystick (left/right)
       const turnValue = e.detail.axis[2];
       this.rotationInput = Math.abs(turnValue) > 0.1 ? turnValue : 0;
     });

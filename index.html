@@ -7,7 +7,7 @@
     <script src="src/clickableStar.js"></script>
   </head>
   <body>
-    <a-scene>
+    <a-scene cursor="rayOrigin: mouse">
       <a-assets>
         <a-asset-item
           id="goksin-island"
@@ -25,16 +25,8 @@
       </a-assets>
 
       <!-- Camera -->
-      <a-entity id="cameraRig" position="0 0 3">
-        <a-camera fov="80">
-          <a-cursor
-            fuse="false"
-            raycaster="objects: .clickable"
-            material="color: white; shader: flat"
-            position="0 0 -1"
-            geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
-          ></a-cursor>
-        </a-camera>
+      <a-entity id="cameraRig" position="0 0 3" cursor="fuse: false">
+        <a-camera fov="100"> </a-camera>
         <a-entity
           thumbstick-turn="rig: #cameraRig; speed: 60"
           laser-controls="hand: right"
@@ -219,10 +211,10 @@
       <!-- Island model (hidden initially) -->
       <a-entity
         id="goksin-island-entity"
-        position="0 -1 0"
+        position="3 0.1 0"
         gltf-model="#goksin-island"
         scale="0.02 0.02 0.02"
-        visible="true"
+        visible="false"
         animation="property: rotation; to: 0 360 0; loop: true; dur: 90000; easing: linear"
       >
         <a-box
