@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <title>Marbles of the Universe</title>
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-    <script src="src/clickableStar.js"></script>
+    <script src="src/interactions.js"></script>
   </head>
   <body>
     <a-scene cursor="rayOrigin: mouse">
@@ -19,7 +19,7 @@
           src="/assets/models/glowingStar.glb"
         ></a-asset-item>
 
-        <img id="nebula-img4" src="/assets/images/nebula4.png" />
+        <img id="nebula-img4" src="/assets/images/nebula2.png" />
         <img id="nebula-img5" src="/assets/images/nebula5.png" />
         <img id="stars-sky" src="/assets/images/starsmilky.jpg" />
       </a-assets>
@@ -46,6 +46,13 @@
       </a-entity>
 
       <!-- Lighting -->
+
+      <a-light
+        type="ambient"
+        color="#ffffff"
+        intensity="5"
+        position="0 1 0"
+      ></a-light>
 
       <!-- Sky -->
       <a-sky
@@ -211,9 +218,9 @@
       <!-- Island model (hidden initially) -->
       <a-entity
         id="goksin-island-entity"
-        position="3 0.1 0"
+        position="3 0.1 -0.5"
         gltf-model="#goksin-island"
-        scale="0.02 0.02 0.02"
+        scale="1 1 1"
         visible="false"
         animation="property: rotation; to: 0 360 0; loop: true; dur: 90000; easing: linear"
       >
@@ -222,7 +229,7 @@
           class="clickable"
           position="0 0 0"
           material="opacity: 0.001; transparent: true"
-          scale="40 40 40"
+          scale="2 2 2"
           island-link
         ></a-box>
         ></a-entity

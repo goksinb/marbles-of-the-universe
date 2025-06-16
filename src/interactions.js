@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
           nebula.setAttribute("opacity", "0");
           nebula.setAttribute("animation__fadein", {
             property: "opacity",
-            to: 0.3,
+            to: 0.5,
             dur: 2000,
             easing: "easeInOutQuad",
             startEvents: "startFadeIn",

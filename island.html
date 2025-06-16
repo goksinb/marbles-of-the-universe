@@ -32,26 +32,13 @@
 
       <a-assets>
         <a-asset-item
-          id="floating-island1"
-          src="/assets/models/Floating1.glb"
-        ></a-asset-item>
-        <a-asset-item
-          id="floating-island2"
-          src="/assets/models/Floating2.glb"
-        ></a-asset-item>
-        <a-asset-item
-          id="floating-island3"
-          src="/assets/models/Floating3.glb"
-        ></a-asset-item>
-
-        <a-asset-item
-          id="floating-island4"
-          src="/assets/models/Floating4.glb"
+          id="tree-island"
+          src="/assets/models/goksin-model.glb"
         ></a-asset-item>
 
         <img id="stars-sky" src="/assets/images/starsmilky.jpg" />
       </a-assets>
-      <a-entity id="cameraRig" position="0 14 110">
+      <a-entity id="cameraRig" position="0 0 0 ">
         <a-entity
           camera
           look-controls
@@ -70,12 +57,8 @@
       </a-entity>
 
       <a-entity
-        light="type: directional; color: #fff7d9; intensity: 0.7"
+        light="type: ambient; color: #fff7d9; intensity: 2"
         position="5 3 0"
-      ></a-entity>
-      <a-entity
-        light="type: directional; color: #fff7d9; intensity: 0.5"
-        position="-5 -3 0"
       ></a-entity>
 
       <a-sky
@@ -83,12 +66,12 @@
         animation="property: rotation; to: 0 360 0; loop: true; dur: 200000; easing: linear"
       ></a-sky>
 
-      <!-- Island model (hidden initially) -->
+      <!-- Island model  -->
       <a-entity
-        id="floating1"
-        position="0 0 0"
+        id="tree-island-entity"
+        position="0 0 -3"
         visible="true"
-        gltf-model="#floating-island1"
+        gltf-model="#tree-island"
         scale="1 1 1"
       >
         <a-sphere
@@ -98,49 +81,6 @@
           class="clickable"
         ></a-sphere>
       </a-entity>
-
-      <a-entity
-        id="floating2"
-        position="-70 -50 0"
-        visible="true"
-        gltf-model="#floating-island2"
-        scale="20 20 20"
-      >
-        <a-sphere
-          radius="1.5"
-          color="#fff"
-          opacity="0.001"
-          class="clickable"
-        ></a-sphere>
-      </a-entity>
-      <!--   <a-entity
-        id="floating3"
-        position="-80 25 0"
-        visible="true"
-        gltf-model="#floating-island3"
-        scale="0.1 0.1 0.1"
-      >
-        <a-sphere
-          radius="1.5"
-          color="#fff"
-          opacity="0.001"
-          class="clickable"
-        ></a-sphere>
-      </a-entity> -->
-      <!-- <a-entity
-        id="floating4"
-        position="-80 6 0"
-        visible="true"
-        gltf-model="#floating-island4"
-        scale="0.04 0.04 0.04"
-      >
-        <a-sphere
-          radius="1.5"
-          color="#fff"
-          opacity="0.001"
-          class="clickable"
-        ></a-sphere>
-      </a-entity> -->
     </a-scene>
 
     <script>
